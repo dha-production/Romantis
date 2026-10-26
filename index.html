@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Cinta Abadi • Melodi & Romansa Jiwa</title>
+    <meta name="description" content="Surat cinta interaktif lengkap dengan melodi piano romantis, kelopak mawar berjatuhan, dan untaian kata asmara yang tulus dan mendalam.">
+    <meta name="theme-color" content="#0f0207">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Favicon / Heart emoji -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💌</text></svg>">
+</head>
+<body>
+
+    <!-- Ambient Canvas: Falling Petals, Fireflies & Heart FX -->
+    <canvas id="petals-canvas"></canvas>
+
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+        <div class="brand-badge">
+            <span class="heart-icon">💖</span>
+            <span>SURAT CINTA ABADI</span>
+        </div>
+        <div class="nav-actions">
+            <button id="btn-toggle-theme" class="nav-btn" title="Ubah Suasana">
+                🕯️ <span>Suasana Bintang</span>
+            </button>
+            <button id="btn-open-settings" class="nav-btn primary" title="Sesuaikan Nama & Lagu">
+                ⚙️ <span>Kustomisasi Surat</span>
+            </button>
+            <button id="btn-print-letter" class="nav-btn" title="Cetak Surat Cinta">
+                🖨️ <span>Cetak Kenangan</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- STAGE 1: THE WAX-SEALED 3D ENVELOPE -->
+    <main id="stage-envelope" class="stage-envelope">
+        <div class="envelope-intro">
+            <h1 class="envelope-title">Sebuah Surat Dari Lubuk Hatiku</h1>
+            <p class="envelope-subtitle">Khusus Dituliskan Untuk Jiwa yang Paling Kurindukan</p>
+        </div>
+
+        <div id="envelope-wrapper" class="envelope-wrapper" title="Klik untuk membuka surat">
+            <div class="envelope-box">
+                <!-- Ribbon Details -->
+                <div class="envelope-ribbon-horizontal"></div>
+                <div class="envelope-ribbon-vertical"></div>
+                <!-- 3D Folding Flap -->
+                <div class="envelope-flap-top"></div>
+                <!-- Wax Seal -->
+                <div id="wax-seal-btn" class="wax-seal-btn" title="Tekan segel lilin untuk membuka">
+                    <div class="wax-seal-inner">
+                        <span class="wax-seal-stamp">❤️</span>
+                        <span class="wax-seal-label">BUKA</span>
+                    </div>
+                </div>
+                <!-- Name Tag -->
+                <div id="display-recipient-tag" class="envelope-tag">Untuk: Dinda Sayang</div>
+            </div>
+        </div>
+
+        <div class="envelope-prompt">
+            <span>✨ Sentuh segel lilin merah di atas untuk membuka rahasia cinta... ✨</span>
+        </div>
+    </main>
+
+    <!-- STAGE 2: THE UNFOLDED ROMANTIC LETTER & MEMORY EXPERIENCE -->
+    <section id="stage-letter" class="stage-letter">
+        
+        <!-- Candlelight Desk Banner -->
+        <div class="desk-atmosphere-banner">
+            <img src="assets/images/desk_bg.jpg" alt="Suasana Meja Lilin Romantis" loading="lazy">
+            <div class="banner-overlay">
+                <span class="banner-badge">"Bila Hatiku Mampu Berbicara, Setiap Detaknya Mengeja Namamu"</span>
+            </div>
+        </div>
+
+        <!-- Parchment Sheet -->
+        <article class="parchment-sheet">
+            <!-- Vintage Filigree Corners -->
+            <div class="ornament-corner top-left"></div>
+            <div class="ornament-corner top-right"></div>
+            <div class="ornament-corner bottom-left"></div>
+            <div class="ornament-corner bottom-right"></div>
+
+            <!-- Letter Header -->
+            <header class="letter-header">
+                <div class="letter-date-wrapper">
+                    <span>🌹</span>
+                    <span id="display-current-date">Selasa, 27 Oktober 2026</span>
+                    <span>🌹</span>
+                </div>
+                <h1 id="display-letter-title" class="letter-main-title">Surat Cinta Abadi</h1>
+                <p class="letter-recipient-line">
+                    Duhai permata hatiku yang tercinta, 
+                    <span id="display-recipient-header" class="recipient-name-highlight">Dinda Sayang</span>...
+                </p>
+            </header>
+
+            <!-- Love Days Counter -->
+            <div class="love-counter-box">
+                <div class="counter-title">✨ Waktu Indah yang Telah Kita Rajut Bersama ✨</div>
+                <div class="counter-grid">
+                    <div class="counter-unit">
+                        <span id="counter-days" class="counter-num">0</span>
+                        <span class="counter-label">Hari</span>
+                    </div>
+                    <div class="counter-unit">
+                        <span id="counter-hours" class="counter-num">0</span>
+                        <span class="counter-label">Jam</span>
+                    </div>
+                    <div class="counter-unit">
+                        <span id="counter-minutes" class="counter-num">0</span>
+                        <span class="counter-label">Menit</span>
+                    </div>
+                    <div class="counter-unit">
+                        <span id="counter-seconds" class="counter-num">0</span>
+                        <span class="counter-label">Detik</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bagian I: Awal Detik Pertemuan -->
+            <section class="letter-section">
+                <div class="section-divider">✦ ❦ ✦</div>
+                <h2 class="section-subtitle"><span class="icon">🌹</span> Saat Semesta Mempertemukan Kita</h2>
+                <p class="letter-prose">
+                    Bila ada satu keajaiban terbesar yang paling aku syukuri di dunia yang fana ini, itu adalah hari ketika takdir memutuskan mempertemukan pandanganku dengan senyumanmu. Sebelum hadirmu, duniaku hanyalah rangkaian hari-hari biasa tanpa warna yang istimewa. Namun saat kamu melangkah masuk ke dalam hidupku, seolah-olah seluruh semesta berhenti berputar sejenak, hanya untuk memastikan bahwa aku tidak melewatkan kehadiran seseorang yang paling berharga.
+                </p>
+                <p class="letter-prose">
+                    Sejak detik itu, namamu tidak pernah lagi sekadar kata. Ia telah bermetamorfosis menjadi doa terindah yang paling sering kusebut dalam hening, menjadi alasan utama mengapa aku selalu menatap esok hari dengan penuh binar harapan dan kehangatan yang tak terlukiskan.
+                </p>
+            </section>
+
+            <!-- Bagian II: Alasan Mengapa Hatiku Memilihmu -->
+            <section class="letter-section">
+                <div class="section-divider">✦ ❦ ✦</div>
+                <h2 class="section-subtitle"><span class="icon">💖</span> Mengapa Hatiku Selalu Memilihmu</h2>
+                <p class="letter-prose" style="margin-bottom: 10px;">
+                    Jika kamu bertanya mengapa aku begitu mencintaimu, kata-kata mungkin takkan pernah cukup untuk merangkumnya. Namun inilah sebagian dari sekian banyak alasan mengapa jiwaku terpaut selamanya padamu:
+                </p>
+
+                <div class="reasons-grid">
+                    <div class="reason-card">
+                        <div class="reason-header">
+                            <span class="reason-icon">👀</span>
+                            <h3 class="reason-title">Tatap Matamu yang Teduh</h3>
+                        </div>
+                        <p class="reason-desc">
+                            Di balik sorot matamu, aku selalu menemukan telaga ketenangan. Segala resah, hiruk-pikuk dunia, dan lelah seketika sirna setiap kali tatapanku bertaut dengan teduhnya matamu.
+                        </p>
+                    </div>
+
+                    <div class="reason-card">
+                        <div class="reason-header">
+                            <span class="reason-icon">🎶</span>
+                            <h3 class="reason-title">Tawamu yang Merdu</h3>
+                        </div>
+                        <p class="reason-desc">
+                            Bagi hatiku, tawamu adalah simfoni terindah di jagat raya. Tidak ada alunan musik mana pun yang sanggup menandingi kebahagiaan saat melihatmu tertawa lepas bersamaku.
+                        </p>
+                    </div>
+
+                    <div class="reason-card">
+                        <div class="reason-header">
+                            <span class="reason-icon">🌸</span>
+                            <h3 class="reason-title">Ketulusan Hatimu</h3>
+                        </div>
+                        <p class="reason-desc">
+                            Caramu menyayangi dan menerimaku apa adanya, dengan segala kekurangan dan ketidaksempurnaanku, membuatku merasa menjadi manusia paling beruntung di muka bumi ini.
+                        </p>
+                    </div>
+
+                    <div class="reason-card">
+                        <div class="reason-header">
+                            <span class="reason-icon">🏡</span>
+                            <h3 class="reason-title">Pelukanmu adalah Rumah</h3>
+                        </div>
+                        <p class="reason-desc">
+                            Rumah bagiku bukanlah sekadar bangunan atau tempat singgah. Rumah adalah ketika kedua lenganku mendekapmu, dan degup jantungmu menenangkan seluruh jiwaku.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bagian III: Galeri Kenangan Indah -->
+            <section class="letter-section">
+                <div class="section-divider">✦ ❦ ✦</div>
+                <h2 class="section-subtitle"><span class="icon">📸</span> Potret Bintang Kenangan Kita</h2>
+                
+                <div class="polaroid-gallery-wrapper">
+                    <div class="polaroid-card">
+                        <div class="polaroid-pin"></div>
+                        <div class="polaroid-img-wrapper">
+                            <img id="polaroid-img" src="assets/images/couple_stars.jpg" alt="Kenangan Indah Bersama" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">Di bawah naungan bintang, selamanya bersamamu.</div>
+                        <div style="text-align: center;">
+                            <button id="polaroid-upload-btn" class="polaroid-action-btn">📷 Ganti dengan Foto Kita Sendiri</button>
+                            <input type="file" id="polaroid-file-input" accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bagian IV: Ikrar Suci & Janji Sepanjang Hayat -->
+            <section class="letter-section">
+                <div class="section-divider">✦ ❦ ✦</div>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+                    <h2 class="section-subtitle" style="margin-bottom: 0;"><span class="icon">📜</span> Janji & Ikrar Sepanjang Hayat</h2>
+                    <button id="btn-typewriter" class="nav-btn" style="padding: 5px 12px; font-size: 0.8rem;">🖋️ Baca dengan Mesin Tik</button>
+                </div>
+                
+                <p id="typewriter-paragraph" class="letter-prose">
+                    Sayangku... Aku berjanji tidak hanya mencintaimu di saat langit cerah dan penuh pelangi, namun aku akan menggenggam jemarimu lebih erat saat badai datang dan hari-hari terasa berat. Aku berjanji akan menjadi tempatmu bersandar ketika lelah, menjadi pendengar setia dari setiap celoteh dan keluh kesahmu, dan menjadi orang pertama yang merayakan sekecil apa pun keberhasilanmu. Mencintaimu bukanlah sebuah pilihan sesaat, melainkan komitmen jiwa yang kupilih berulang kali setiap fajar menyingsing.
+                </p>
+                <p class="letter-prose">
+                    Mari kita lewati musim demi musim kehidupan ini berdua. Biarkan rambut kita perlahan memutih bersama waktu, namun kehangatan cinta yang ada di dada ini akan tetap semekar bunga mawar di pagi musim semi.
+                </p>
+            </section>
+
+            <!-- Bagian V: Bisikan Rahasia Hatiku (Scratch / Click to Reveal) -->
+            <div class="secret-whisper-box">
+                <div class="secret-whisper-title">🔒 BISIKAN TERDALAM HATIKU</div>
+                <div id="secret-card-cover" class="secret-card-cover">
+                    <div class="secret-prompt">
+                        <span style="font-size: 2rem;">✨</span><br>
+                        <strong>Klik di sini untuk membuka rahasia yang tak pernah terucap...</strong>
+                    </div>
+                    <div class="secret-card-text">
+                        "Tahukah kamu? Setiap kali sebelum terlelap, doa yang selalu kubisikkan kepada Sang Maha Pencipta adalah memohon agar esok hari aku masih diberi nafas dan kesempatan untuk mencintaimu lebih dalam lagi dari hari ini. Dan bila diizinkan meminta satu keabadian, aku hanya ingin surga di mana aku bisa terus menatap senyumanmu selamanya."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bagian VI: Pertanyaan Hati Terakhir (Interactive Proposal) -->
+            <section class="proposal-container">
+                <div class="proposal-crown">👑 💍 ✨</div>
+                <h2 class="proposal-question">Sudikah Kamu Menua Bersamaku?</h2>
+                <p class="proposal-sub">Teruslah menjadi teman cerita, kekasih hati, dan separuh jiwaku untuk selamanya...</p>
+                
+                <div id="proposal-action-area" class="proposal-buttons">
+                    <button id="btn-yes" class="btn-yes">
+                        <span>Ya, Selamanya Aku Mau!</span>
+                        <span style="font-size: 1.4rem;">❤️💍</span>
+                    </button>
+                    <button id="btn-no" class="btn-no">
+                        <span>Tidak 🙈</span>
+                    </button>
+                </div>
+
+                <!-- Celebration Card after YES is clicked -->
+                <div id="proposal-celebration" class="proposal-celebration">
+                    <h3 class="celebration-title">Alhamdulillah & Terima Kasih, Cintaku! ❤️</h3>
+                    <p class="celebration-message">
+                        Detik ini menjadi saksi abadi cinta kita. Mulai hari ini hingga hembusan nafas terakhirku, tanganku takkan pernah melepaskan genggaman jemarimu. Aku mencintaimu lebih dari kata-kata yang sanggup merangkumnya! 🌹🥂✨
+                    </p>
+                </div>
+            </section>
+
+            <!-- Letter Signature -->
+            <footer class="letter-signature-area">
+                <div class="signature-box">
+                    <div class="signature-date">Tertanda dengan segenap jiwa,</div>
+                    <div id="display-sender-sign" class="signature-handwriting">Kanda Tercinta</div>
+                    <div class="signature-sender-title">Yang Selalu Mengagumimu</div>
+                </div>
+            </footer>
+        </article>
+
+    </section>
+
+    <!-- FLOATING MUSIC PLAYER CONTROLLER -->
+    <aside id="floating-music-widget" class="floating-music-widget">
+        <!-- Vinyl Record Disc -->
+        <div class="vinyl-disc">
+            <div class="vinyl-center-art"></div>
+        </div>
+
+        <!-- Meta -->
+        <div class="music-meta">
+            <span id="music-track-name" class="music-track-name">Piano Asmara (Canon)</span>
+            <span class="music-status">Simfoni Romantis</span>
+        </div>
+
+        <!-- Controls -->
+        <div class="music-controls">
+            <button id="music-play-btn" class="music-btn" title="Putar / Jeda Musik">
+                <span id="music-play-icon">▶️</span>
+            </button>
+            <input type="range" id="music-volume" class="music-volume-slider" min="0" max="1" step="0.05" value="0.65" title="Atur Volume">
+            <!-- Audio Equalizer Bars -->
+            <div class="audio-visualizer-bars">
+                <span class="viz-bar"></span>
+                <span class="viz-bar"></span>
+                <span class="viz-bar"></span>
+                <span class="viz-bar"></span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- PERSONALIZATION & SETTINGS MODAL -->
+    <div id="modal-settings" class="modal-backdrop">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 class="modal-title">💌 Kustomisasi Surat Asmara</h3>
+                <button id="btn-close-settings" class="modal-close-btn">&times;</button>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="input-recipient">Nama Pasangan (Penerima):</label>
+                <input type="text" id="input-recipient" class="form-input" placeholder="Misal: Dinda Sayang">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="input-sender">Nama Pengirim (Dirimu):</label>
+                <input type="text" id="input-sender" class="form-input" placeholder="Misal: Kanda Tercinta">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="input-start-date">Tanggal Spesial / Jadian / Pernikahan:</label>
+                <input type="date" id="input-start-date" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="audio-mode-select">Pilihan Melodi Pengiring:</label>
+                <select id="audio-mode-select" class="form-select">
+                    <option value="piano">🎹 Melodi Piano Romantis (Canon in D Ballad)</option>
+                    <option value="rain-piano">🌧️ Suasana Hujan Gerimis & Piano Lembut</option>
+                    <option value="custom">🎵 Unggah Lagu Sendiri (.mp3 / .wav)</option>
+                </select>
+            </div>
+
+            <div id="custom-audio-group" class="form-group" style="display: none;">
+                <label class="form-label" for="custom-audio-file">Pilih File Musik Pasanganmu:</label>
+                <input type="file" id="custom-audio-file" class="form-input" accept="audio/*">
+            </div>
+
+            <div class="modal-actions">
+                <button id="btn-copy-share" class="nav-btn" type="button">
+                    🔗 Salin Tautan WhatsApp
+                </button>
+                <button id="btn-save-settings" class="nav-btn primary" type="button">
+                    💾 Simpan Perubahan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/audio-synth.js"></script>
+    <script src="assets/js/petals.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
